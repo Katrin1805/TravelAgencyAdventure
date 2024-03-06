@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\STUDENTS-1212-12\\Desktop\\DBKatrin\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {}
+    "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {}
   },
   "projects": {
-    "C:\\Users\\STUDENTS-1212-12\\Desktop\\DBKatrin\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {
+    "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\STUDENTS-1212-12\\Desktop\\DBKatrin\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
+        "projectUniqueName": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
         "projectName": "TuristicheskaAganciq",
-        "projectPath": "C:\\Users\\STUDENTS-1212-12\\Desktop\\DBKatrin\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
+        "projectPath": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
         "packagesPath": "C:\\Users\\STUDENTS-1212-12\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\STUDENTS-1212-12\\Desktop\\DBKatrin\\TuristicheskaAganciq\\obj\\",
+        "outputPath": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\STUDENTS-1212-12\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -62,6 +62,12 @@
               "version": "[8.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.1, )"
             }

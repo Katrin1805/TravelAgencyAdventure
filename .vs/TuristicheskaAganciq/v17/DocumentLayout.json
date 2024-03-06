@@ -1,7 +1,24 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\STUDENTS-1212-12\\Desktop\\DBKatrin\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9591416F-5080-48D5-874E-8C9EE46231E9}|TuristicheskaAganciq\\TuristicheskaAganciq.csproj|c:\\users\\students-1212-12\\desktop\\travelagencyadventure\\turisticheskaaganciq\\controllers\\excursionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9591416F-5080-48D5-874E-8C9EE46231E9}|TuristicheskaAganciq\\TuristicheskaAganciq.csproj|solutionrelative:turisticheskaaganciq\\controllers\\excursionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9591416F-5080-48D5-874E-8C9EE46231E9}|TuristicheskaAganciq\\TuristicheskaAganciq.csproj|c:\\users\\students-1212-12\\desktop\\travelagencyadventure\\turisticheskaaganciq\\controllers\\rezervationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9591416F-5080-48D5-874E-8C9EE46231E9}|TuristicheskaAganciq\\TuristicheskaAganciq.csproj|solutionrelative:turisticheskaaganciq\\controllers\\rezervationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9591416F-5080-48D5-874E-8C9EE46231E9}|TuristicheskaAganciq\\TuristicheskaAganciq.csproj|c:\\users\\students-1212-12\\desktop\\travelagencyadventure\\turisticheskaaganciq\\controllers\\destinationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9591416F-5080-48D5-874E-8C9EE46231E9}|TuristicheskaAganciq\\TuristicheskaAganciq.csproj|solutionrelative:turisticheskaaganciq\\controllers\\destinationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9591416F-5080-48D5-874E-8C9EE46231E9}|TuristicheskaAganciq\\TuristicheskaAganciq.csproj|c:\\users\\students-1212-12\\desktop\\travelagencyadventure\\turisticheskaaganciq\\controllers\\countriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9591416F-5080-48D5-874E-8C9EE46231E9}|TuristicheskaAganciq\\TuristicheskaAganciq.csproj|solutionrelative:turisticheskaaganciq\\controllers\\countriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +26,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ExcursionsController.cs",
+              "DocumentMoniker": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\Controllers\\ExcursionsController.cs",
+              "RelativeDocumentMoniker": "TuristicheskaAganciq\\Controllers\\ExcursionsController.cs",
+              "ToolTip": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\Controllers\\ExcursionsController.cs",
+              "RelativeToolTip": "TuristicheskaAganciq\\Controllers\\ExcursionsController.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T09:15:36.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RezervationsController.cs",
+              "DocumentMoniker": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\Controllers\\RezervationsController.cs",
+              "RelativeDocumentMoniker": "TuristicheskaAganciq\\Controllers\\RezervationsController.cs",
+              "ToolTip": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\Controllers\\RezervationsController.cs",
+              "RelativeToolTip": "TuristicheskaAganciq\\Controllers\\RezervationsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T09:14:57.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DestinationsController.cs",
+              "DocumentMoniker": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\Controllers\\DestinationsController.cs",
+              "RelativeDocumentMoniker": "TuristicheskaAganciq\\Controllers\\DestinationsController.cs",
+              "ToolTip": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\Controllers\\DestinationsController.cs",
+              "RelativeToolTip": "TuristicheskaAganciq\\Controllers\\DestinationsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T09:14:28.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CountriesController.cs",
+              "DocumentMoniker": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\Controllers\\CountriesController.cs",
+              "RelativeDocumentMoniker": "TuristicheskaAganciq\\Controllers\\CountriesController.cs",
+              "ToolTip": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\Controllers\\CountriesController.cs",
+              "RelativeToolTip": "TuristicheskaAganciq\\Controllers\\CountriesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T09:13:53.85Z",
+              "EditorCaption": ""
             }
           ]
         },
