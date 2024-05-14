@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TuristicheskaAganciq.Migrations
 {
     /// <inheritdoc />
-    public partial class NovaMigraciqq : Migration
+    public partial class KatrinMigraciqFixed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -56,8 +56,10 @@ namespace TuristicheskaAganciq.Migrations
                 name: "Countries",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -174,17 +176,18 @@ namespace TuristicheskaAganciq.Migrations
                 name: "Destinations",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CountriesId = table.Column<int>(type: "int", nullable: false),
-                    CountryId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Destinations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Destinations_Countries_CountryId",
-                        column: x => x.CountryId,
+                        name: "FK_Destinations_Countries_CountriesId",
+                        column: x => x.CountriesId,
                         principalTable: "Countries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -196,12 +199,13 @@ namespace TuristicheskaAganciq.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DestinationsId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    VidTransport = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Period = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    ExcursionNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DestinationsId = table.Column<int>(type: "int", nullable: false),
+                    Duration = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateRegister = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    VidTransport = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    DateRegister = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -223,6 +227,7 @@ namespace TuristicheskaAganciq.Migrations
                     ClientsId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ExcursionsId = table.Column<int>(type: "int", nullable: false),
                     Pasangers = table.Column<int>(type: "int", nullable: false),
+                    Begin = table.Column<DateTime>(type: "datetime2", nullable: false),
                     RegisterDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -282,9 +287,9 @@ namespace TuristicheskaAganciq.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Destinations_CountryId",
+                name: "IX_Destinations_CountriesId",
                 table: "Destinations",
-                column: "CountryId");
+                column: "CountriesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Excursions_DestinationsId",

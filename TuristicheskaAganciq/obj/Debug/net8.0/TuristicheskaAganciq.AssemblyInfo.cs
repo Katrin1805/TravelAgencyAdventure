@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TuristicheskaAganciq")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+769ca771b9c981d02ad0a9e722b444c2a7e8e483")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a89a707a1d1dc992cddadda4144c8d471c903fc8")]
 [assembly: System.Reflection.AssemblyProductAttribute("TuristicheskaAganciq")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TuristicheskaAganciq")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

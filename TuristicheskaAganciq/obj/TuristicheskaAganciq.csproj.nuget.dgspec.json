@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {}
+    "C:\\Users\\STUDENTS-STEM1-7\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {}
   },
   "projects": {
-    "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {
+    "C:\\Users\\STUDENTS-STEM1-7\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
+        "projectUniqueName": "C:\\Users\\STUDENTS-STEM1-7\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
         "projectName": "TuristicheskaAganciq",
-        "projectPath": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
-        "packagesPath": "C:\\Users\\STUDENTS-1212-12\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\STUDENTS-1212-12\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\obj\\",
+        "projectPath": "C:\\Users\\STUDENTS-STEM1-7\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
+        "packagesPath": "C:\\Users\\STUDENTS-STEM1-7\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\STUDENTS-STEM1-7\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\STUDENTS-1212-12\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\STUDENTS-STEM1-7\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,42 +34,45 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.1, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.4, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.4, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.2, )"
             }
           },
           "imports": [
@@ -91,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

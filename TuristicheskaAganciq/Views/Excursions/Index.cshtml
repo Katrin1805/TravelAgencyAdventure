@@ -13,19 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Destination)
+                @Html.DisplayNameFor(model => model.ExcursionNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destinations)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.VidTransport)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Period)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateRegister)
@@ -37,19 +40,22 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Destination.Id)
+                @Html.DisplayFor(modelItem => item.ExcursionNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Destinations.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VidTransport)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Period)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateRegister)

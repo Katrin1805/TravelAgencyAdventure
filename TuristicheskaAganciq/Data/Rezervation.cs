@@ -8,8 +8,9 @@
         public int ExcursionsId { get; set; }
         public Excursion Excursions { get; set; }
         public int Pasangers { get; set; }
-        public DateTime Begin { get; } = DateTime.Now;
+        public DateTime Begin { get; set; }
         public DateTime RegisterDate { get; set; }
+        
     }
 
 }

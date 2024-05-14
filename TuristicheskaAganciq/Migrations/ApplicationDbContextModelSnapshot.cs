@@ -17,7 +17,7 @@ namespace TuristicheskaAganciq.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.1")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -232,10 +232,16 @@ namespace TuristicheskaAganciq.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("TuristicheskaAganciq.Data.Countries", b =>
+            modelBuilder.Entity("TuristicheskaAganciq.Data.Country", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -246,17 +252,19 @@ namespace TuristicheskaAganciq.Migrations
                     b.ToTable("Countries");
                 });
 
-            modelBuilder.Entity("TuristicheskaAganciq.Data.Destinations", b =>
+            modelBuilder.Entity("TuristicheskaAganciq.Data.Destination", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CountriesId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CountryId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -264,7 +272,7 @@ namespace TuristicheskaAganciq.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CountryId");
+                    b.HasIndex("CountriesId");
 
                     b.ToTable("Destinations");
                 });
@@ -277,19 +285,21 @@ namespace TuristicheskaAganciq.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("DateRegister")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DateRegister")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DestinationsId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("DestinationsId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Period")
+                    b.Property<string>("Duration")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExcursionNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -314,6 +324,9 @@ namespace TuristicheskaAganciq.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Begin")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ClientsId")
                         .IsRequired()
@@ -388,26 +401,26 @@ namespace TuristicheskaAganciq.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TuristicheskaAganciq.Data.Destinations", b =>
+            modelBuilder.Entity("TuristicheskaAganciq.Data.Destination", b =>
                 {
-                    b.HasOne("TuristicheskaAganciq.Data.Countries", "Country")
-                        .WithMany("Destination")
-                        .HasForeignKey("CountryId")
+                    b.HasOne("TuristicheskaAganciq.Data.Country", "Countries")
+                        .WithMany("Destinations")
+                        .HasForeignKey("CountriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Country");
+                    b.Navigation("Countries");
                 });
 
             modelBuilder.Entity("TuristicheskaAganciq.Data.Excursion", b =>
                 {
-                    b.HasOne("TuristicheskaAganciq.Data.Destinations", "Destination")
-                        .WithMany()
+                    b.HasOne("TuristicheskaAganciq.Data.Destination", "Destinations")
+                        .WithMany("Excursions")
                         .HasForeignKey("DestinationsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Destination");
+                    b.Navigation("Destinations");
                 });
 
             modelBuilder.Entity("TuristicheskaAganciq.Data.Rezervation", b =>
@@ -434,9 +447,14 @@ namespace TuristicheskaAganciq.Migrations
                     b.Navigation("Rezervations");
                 });
 
-            modelBuilder.Entity("TuristicheskaAganciq.Data.Countries", b =>
+            modelBuilder.Entity("TuristicheskaAganciq.Data.Country", b =>
                 {
-                    b.Navigation("Destination");
+                    b.Navigation("Destinations");
+                });
+
+            modelBuilder.Entity("TuristicheskaAganciq.Data.Destination", b =>
+                {
+                    b.Navigation("Excursions");
                 });
 
             modelBuilder.Entity("TuristicheskaAganciq.Data.Excursion", b =>

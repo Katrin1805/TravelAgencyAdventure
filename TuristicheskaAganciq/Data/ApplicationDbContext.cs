@@ -11,7 +11,7 @@ namespace TuristicheskaAganciq.Data
         }
         public DbSet<Excursion> Excursions { get; set; }
         public DbSet<Rezervation> Rezurations { get; set;}
-        public DbSet<Countries>Countries { get; set; }
-        public DbSet<Destinations> Destinations { get; set; }
+        public DbSet<Country>Countries { get; set; }
+        public DbSet<Destination> Destinations { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace TuristicheskaAganciq.Controllers
         // GET: Excursions
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Excursions.Include(e => e.Destination);
+            var applicationDbContext = _context.Excursions.Include(e => e.Destinations);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace TuristicheskaAganciq.Controllers
             }
 
             var excursion = await _context.Excursions
-                .Include(e => e.Destination)
+                .Include(e => e.Destinations)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (excursion == null)
             {
@@ -47,7 +47,7 @@ namespace TuristicheskaAganciq.Controllers
         // GET: Excursions/Create
         public IActionResult Create()
         {
-            ViewData["DestinationsId"] = new SelectList(_context.Destinations, "Id", "Id");
+            ViewData["DestinationsId"] = new SelectList(_context.Destinations, "Id", "Name");
             return View();
         }
 
@@ -56,15 +56,16 @@ namespace TuristicheskaAganciq.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DestinationsId,VidTransport,Period,Price,Description,DateRegister")] Excursion excursion)
+        public async Task<IActionResult> Create([Bind("ExcursionNumber,DestinationsId,Duration,Description,VidTransport,Price,DateRegister")] Excursion excursion)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(excursion);
+                excursion.DateRegister = DateTime.Now;
+                _context.Excursions.Add(excursion);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DestinationsId"] = new SelectList(_context.Destinations, "Id", "Id", excursion.DestinationsId);
+            ViewData["DestinationsId"] = new SelectList(_context.Destinations, "Id", "Name", excursion.DestinationsId);
             return View(excursion);
         }
 
@@ -81,7 +82,7 @@ namespace TuristicheskaAganciq.Controllers
             {
                 return NotFound();
             }
-            ViewData["DestinationsId"] = new SelectList(_context.Destinations, "Id", "Id", excursion.DestinationsId);
+            ViewData["DestinationsId"] = new SelectList(_context.Destinations, "Id", "Name", excursion.DestinationsId);
             return View(excursion);
         }
 
@@ -90,7 +91,7 @@ namespace TuristicheskaAganciq.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DestinationsId,VidTransport,Period,Price,Description,DateRegister")] Excursion excursion)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ExcursionNumber,DestinationsId,Duration,Description,VidTransport,Price,DateRegister")] Excursion excursion)
         {
             if (id != excursion.Id)
             {
@@ -101,7 +102,8 @@ namespace TuristicheskaAganciq.Controllers
             {
                 try
                 {
-                    _context.Update(excursion);
+                    excursion.DateRegister = DateTime.Now;
+                    _context.Excursions.Update(excursion);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -130,7 +132,7 @@ namespace TuristicheskaAganciq.Controllers
             }
 
             var excursion = await _context.Excursions
-                .Include(e => e.Destination)
+                .Include(e => e.Destinations)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (excursion == null)
             {

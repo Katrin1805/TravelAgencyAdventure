@@ -25,21 +25,21 @@ namespace TuristicheskaAganciq.Controllers
         }
 
         // GET: Countries/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var countries = await _context.Countries
+            var country = await _context.Countries
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (countries == null)
+            if (country == null)
             {
                 return NotFound();
             }
 
-            return View(countries);
+            return View(country);
         }
 
         // GET: Countries/Create
@@ -53,31 +53,32 @@ namespace TuristicheskaAganciq.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Countries countries)
+        public async Task<IActionResult> Create([Bind("Name,DateModified")] Country country)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(countries);
+                country.DateModified = DateTime.Now;
+                _context.Countries.Add(country);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(countries);
+            return View(country);
         }
 
         // GET: Countries/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var countries = await _context.Countries.FindAsync(id);
-            if (countries == null)
+            var country = await _context.Countries.FindAsync(id);
+            if (country == null)
             {
                 return NotFound();
             }
-            return View(countries);
+            return View(country);
         }
 
         // POST: Countries/Edit/5
@@ -85,9 +86,9 @@ namespace TuristicheskaAganciq.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name")] Countries countries)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateModified")] Country country)
         {
-            if (id != countries.Id)
+            if (id != country.Id)
             {
                 return NotFound();
             }
@@ -96,12 +97,13 @@ namespace TuristicheskaAganciq.Controllers
             {
                 try
                 {
-                    _context.Update(countries);
+                    country.DateModified = DateTime.Now;
+                    _context.Countries.Update(country);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CountriesExists(countries.Id))
+                    if (!CountryExists(country.Id))
                     {
                         return NotFound();
                     }
@@ -112,43 +114,43 @@ namespace TuristicheskaAganciq.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(countries);
+            return View(country);
         }
 
         // GET: Countries/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var countries = await _context.Countries
+            var country = await _context.Countries
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (countries == null)
+            if (country == null)
             {
                 return NotFound();
             }
 
-            return View(countries);
+            return View(country);
         }
 
         // POST: Countries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var countries = await _context.Countries.FindAsync(id);
-            if (countries != null)
+            var country = await _context.Countries.FindAsync(id);
+            if (country != null)
             {
-                _context.Countries.Remove(countries);
+                _context.Countries.Remove(country);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CountriesExists(string id)
+        private bool CountryExists(int id)
         {
             return _context.Countries.Any(e => e.Id == id);
         }

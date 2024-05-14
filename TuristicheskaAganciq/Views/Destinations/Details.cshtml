@@ -1,4 +1,4 @@
-﻿@model TuristicheskaAganciq.Data.Destinations
+﻿@model TuristicheskaAganciq.Data.Destination
 
 @{
     ViewData["Title"] = "Details";
@@ -7,7 +7,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Destinations</h4>
+    <h4>Destination</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -17,10 +17,16 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CountriesId)
+            @Html.DisplayNameFor(model => model.Countries)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CountriesId)
+            @Html.DisplayFor(model => model.Countries.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateModified)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateModified)
         </dd>
     </dl>
 </div>

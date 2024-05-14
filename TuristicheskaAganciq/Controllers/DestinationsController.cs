@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -21,30 +22,33 @@ namespace TuristicheskaAganciq.Controllers
         // GET: Destinations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Destinations.ToListAsync());
+            var applicationDbContext = _context.Destinations.Include(d => d.Countries);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Destinations/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var destinations = await _context.Destinations
+            var destination = await _context.Destinations
+                .Include(d => d.Countries)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (destinations == null)
+            if (destination == null)
             {
                 return NotFound();
             }
 
-            return View(destinations);
+            return View(destination);
         }
 
         // GET: Destinations/Create
         public IActionResult Create()
         {
+            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Name");
             return View();
         }
 
@@ -53,31 +57,34 @@ namespace TuristicheskaAganciq.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,CountriesId")] Destinations destinations)
+        public async Task<IActionResult> Create([Bind("Name,CountriesId,DateModified")] Destination destination)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(destinations);
+                destination.DateModified = DateTime.Now;
+                _context.Destinations.Add(destination);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(destinations);
+            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Name", destination.CountriesId);
+            return View(destination);
         }
 
         // GET: Destinations/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var destinations = await _context.Destinations.FindAsync(id);
-            if (destinations == null)
+            var destination = await _context.Destinations.FindAsync(id);
+            if (destination == null)
             {
                 return NotFound();
             }
-            return View(destinations);
+            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Name", destination.CountriesId);
+            return View(destination);
         }
 
         // POST: Destinations/Edit/5
@@ -85,9 +92,9 @@ namespace TuristicheskaAganciq.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,CountriesId")] Destinations destinations)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CountriesId,DateModified")] Destination destination)
         {
-            if (id != destinations.Id)
+            if (id != destination.Id)
             {
                 return NotFound();
             }
@@ -96,12 +103,13 @@ namespace TuristicheskaAganciq.Controllers
             {
                 try
                 {
-                    _context.Update(destinations);
+                    destination.DateModified = DateTime.Now;
+                    _context.Destinations.Update(destination);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DestinationsExists(destinations.Id))
+                    if (!DestinationExists(destination.Id))
                     {
                         return NotFound();
                     }
@@ -112,43 +120,45 @@ namespace TuristicheskaAganciq.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(destinations);
+            ViewData["CountriesId"] = new SelectList(_context.Countries, "Id", "Id", destination.CountriesId);
+            return View(destination);
         }
 
         // GET: Destinations/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var destinations = await _context.Destinations
+            var destination = await _context.Destinations
+                .Include(d => d.Countries)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (destinations == null)
+            if (destination == null)
             {
                 return NotFound();
             }
 
-            return View(destinations);
+            return View(destination);
         }
 
         // POST: Destinations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var destinations = await _context.Destinations.FindAsync(id);
-            if (destinations != null)
+            var destination = await _context.Destinations.FindAsync(id);
+            if (destination != null)
             {
-                _context.Destinations.Remove(destinations);
+                _context.Destinations.Remove(destination);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DestinationsExists(string id)
+        private bool DestinationExists(int id)
         {
             return _context.Destinations.Any(e => e.Id == id);
         }

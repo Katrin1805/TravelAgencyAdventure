@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,13 +11,16 @@ using TuristicheskaAganciq.Data;
 
 namespace TuristicheskaAganciq.Controllers
 {
+    [Authorize]
     public class RezervationsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Client> _userManager;
 
-        public RezervationsController(ApplicationDbContext context)
+        public RezervationsController(ApplicationDbContext context, UserManager<Client> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Rezervations
@@ -48,8 +53,8 @@ namespace TuristicheskaAganciq.Controllers
         // GET: Rezervations/Create
         public IActionResult Create()
         {
-            ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["ExcursionsId"] = new SelectList(_context.Excursions, "Id", "Id");
+            //ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["ExcursionsId"] = new SelectList(_context.Excursions, "Id", "Name");
             return View();
         }
 
@@ -58,16 +63,18 @@ namespace TuristicheskaAganciq.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ClientsId,ExcursionsId,Pasangers,RegisterDate")] Rezervation rezervation)
+        public async Task<IActionResult> Create([Bind("ExcursionsId,Pasangers,Begin,RegisterDate")] Rezervation rezervation)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(rezervation);
+                rezervation.RegisterDate = DateTime.Now;
+                rezervation.ClientsId = _userManager.GetUserId(User);
+                _context.Rezurations.Add(rezervation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id", rezervation.ClientsId);
-            ViewData["ExcursionsId"] = new SelectList(_context.Excursions, "Id", "Id", rezervation.ExcursionsId);
+            //ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id", rezervation.ClientsId);
+            ViewData["ExcursionsId"] = new SelectList(_context.Excursions, "Id", "Name", rezervation.ExcursionsId);
             return View(rezervation);
         }
 
@@ -84,8 +91,8 @@ namespace TuristicheskaAganciq.Controllers
             {
                 return NotFound();
             }
-            ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id", rezervation.ClientsId);
-            ViewData["ExcursionsId"] = new SelectList(_context.Excursions, "Id", "Id", rezervation.ExcursionsId);
+            //ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id", rezervation.ClientsId);
+            ViewData["ExcursionsId"] = new SelectList(_context.Excursions, "Id", "Name", rezervation.ExcursionsId);
             return View(rezervation);
         }
 
@@ -94,7 +101,7 @@ namespace TuristicheskaAganciq.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ClientsId,ExcursionsId,Pasangers,RegisterDate")] Rezervation rezervation)
+        public async Task<IActionResult> Edit(int id, [Bind("ExcursionsId,Pasangers,Begin,RegisterDate")] Rezervation rezervation)
         {
             if (id != rezervation.Id)
             {
@@ -105,7 +112,9 @@ namespace TuristicheskaAganciq.Controllers
             {
                 try
                 {
-                    _context.Update(rezervation);
+                    rezervation.RegisterDate = DateTime.Now;
+                    rezervation.ClientsId = _userManager.GetUserId(User);
+                    _context.Rezurations.Update(rezervation);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -121,8 +130,8 @@ namespace TuristicheskaAganciq.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id", rezervation.ClientsId);
-            ViewData["ExcursionsId"] = new SelectList(_context.Excursions, "Id", "Id", rezervation.ExcursionsId);
+            //ViewData["ClientsId"] = new SelectList(_context.Users, "Id", "Id", rezervation.ClientsId);
+            ViewData["ExcursionsId"] = new SelectList(_context.Excursions, "Id", "Name", rezervation.ExcursionsId);
             return View(rezervation);
         }
 
