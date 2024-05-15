@@ -58,12 +58,29 @@ namespace TuristicheskaAganciq.Controllers
             return View();
         }
 
+        public async Task<IActionResult> CreateWithExcursionId(int excursionId, DateTime startDate, DateTime endDate)
+        {
+            var currentExcursion = await _context.Excursions.FirstOrDefaultAsync(z => z.Id == excursionId);
+            Rezervation reservation = new Rezervation();
+            //order.ProductsId = productId;
+            // productId = order.ProductsId;
+            reservation.ExcursionsId = excursionId;
+            reservation.StartDate = startDate;
+            reservation.EndDate = endDate;
+        
+            reservation.ClientsId = _userManager.GetUserId(User);
+            var price = currentExcursion.Price;
+            _context.Rezurations.Add(reservation);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         // POST: Rezervations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ExcursionsId,Pasangers,Begin,RegisterDate")] Rezervation rezervation)
+        public async Task<IActionResult> Create([Bind("ExcursionsId,StartDate,EndDate,RegisterDate")] Rezervation rezervation)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +118,7 @@ namespace TuristicheskaAganciq.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ExcursionsId,Pasangers,Begin,RegisterDate")] Rezervation rezervation)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ClientsId,ExcursionsId,StartDate,EndDate,RegisterDate")] Rezervation rezervation)
         {
             if (id != rezervation.Id)
             {

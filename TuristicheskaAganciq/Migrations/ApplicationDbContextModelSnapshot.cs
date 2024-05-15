@@ -325,12 +325,12 @@ namespace TuristicheskaAganciq.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("Begin")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("ClientsId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ExcursionsId")
                         .HasColumnType("int");
@@ -339,6 +339,9 @@ namespace TuristicheskaAganciq.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("RegisterDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

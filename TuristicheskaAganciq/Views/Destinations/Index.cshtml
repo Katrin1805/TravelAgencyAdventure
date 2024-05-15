@@ -4,43 +4,81 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    body {
+        background-image: url(https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTF8fHxlbnwwfHx8fHw%3D);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    thead {
+        background-color: #009EFF;
+        color: white;
+        text-shadow: 1px 1px black;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+    tbody {
+        background-color: rgba(245, 242, 249, 0.7);
+       
+    }
+
+    h1 {
+        color: white;
+        text-shadow: 3px 3px black;
+    }
+
+
+    .buttons{
+        text-shadow:none;
+    }
+
+</style>
+<center><h1>Дестинации🌍</h1></center>
+
+@if (User.IsInRole("Admin"))
+{
+    <center><a id="button" class="btn btn-primary " asp-action="Create">Добави дестинация</a></center>
+}
+<br />
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Дестинация
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Countries)
+                Държава
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateModified)
+               Дата на промяна
             </th>
-            <th></th>
+            @if (User.IsInRole("Admin"))
+            {
+             <th></th>   
+            }
+            
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                    <b>@Html.DisplayFor(modelItem => item.Name)</b>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Countries.Id)
+                    <b>@Html.DisplayFor(modelItem => item.Countries.Name)</b>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateModified)
+                    <b>@Html.DisplayFor(modelItem => item.DateModified)</b>
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+                @if (User.IsInRole("Admin"))
+                {
+                          <td class="buttons">
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>  
+                }
+        
         </tr>
 }
     </tbody>

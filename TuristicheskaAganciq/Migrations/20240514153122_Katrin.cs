@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TuristicheskaAganciq.Migrations
 {
     /// <inheritdoc />
-    public partial class KatrinMigraciqFixed : Migration
+    public partial class Katrin : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -227,7 +227,8 @@ namespace TuristicheskaAganciq.Migrations
                     ClientsId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ExcursionsId = table.Column<int>(type: "int", nullable: false),
                     Pasangers = table.Column<int>(type: "int", nullable: false),
-                    Begin = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     RegisterDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

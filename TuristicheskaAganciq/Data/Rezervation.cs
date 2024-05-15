@@ -8,7 +8,8 @@
         public int ExcursionsId { get; set; }
         public Excursion Excursions { get; set; }
         public int Pasangers { get; set; }
-        public DateTime Begin { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public DateTime RegisterDate { get; set; }
         
     }

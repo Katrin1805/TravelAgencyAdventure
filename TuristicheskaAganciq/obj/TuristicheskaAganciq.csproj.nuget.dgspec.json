@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\STUDENTS-STEM1-7\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {}
+    "C:\\Users\\STUDENTS-STEM1-10\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {}
   },
   "projects": {
-    "C:\\Users\\STUDENTS-STEM1-7\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {
+    "C:\\Users\\STUDENTS-STEM1-10\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\STUDENTS-STEM1-7\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
+        "projectUniqueName": "C:\\Users\\STUDENTS-STEM1-10\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
         "projectName": "TuristicheskaAganciq",
-        "projectPath": "C:\\Users\\STUDENTS-STEM1-7\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
-        "packagesPath": "C:\\Users\\STUDENTS-STEM1-7\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\STUDENTS-STEM1-7\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\obj\\",
+        "projectPath": "C:\\Users\\STUDENTS-STEM1-10\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\TuristicheskaAganciq.csproj",
+        "packagesPath": "C:\\Users\\STUDENTS-STEM1-10\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\STUDENTS-STEM1-10\\Desktop\\TravelAgencyAdventure\\TuristicheskaAganciq\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\STUDENTS-STEM1-7\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\STUDENTS-STEM1-10\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

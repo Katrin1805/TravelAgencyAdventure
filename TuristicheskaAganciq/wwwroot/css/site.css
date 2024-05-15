@@ -20,3 +20,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+footer {
+    background-color:white;
+    border-top: 6px solid black;
+}

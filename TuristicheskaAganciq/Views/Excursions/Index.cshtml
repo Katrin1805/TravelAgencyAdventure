@@ -4,68 +4,125 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    body{
+        background-image: url(https://www.pixel4k.com/wp-content/uploads/2018/11/man-tourist-backpack-mountains-travel-4k_1541115960.jpg.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+  
+    thead {
+        background-color: #1B9CEA;
+        color: white;
+        text-shadow: 1px 1px black;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+    tbody{
+        background-color: rgba(249, 242, 249, 0.7);
+    }
+   h1{
+       color:white;
+       text-shadow:3px 3px black;
+   }
+
+    .buttoni{
+        display:flex;
+        justify-content:center;
+    }
+
+    .butn{
+        display: flex;
+        justify-content: center;
+        padding:5px;
+    }
+    .butn input[type=submit]{
+            background-color: #1B9CEA;
+    }
+</style>
+<center><h1>🚂🪂Най-приключенските ни екскурзии🛫🚢</h1></center>
+
+@if (User.IsInRole("Admin"))
+{
+    <center><a id="button" class="btn btn-primary " asp-action="Create">Добави екскурзия</a></center>
+}
+<br />
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ExcursionNumber)
+                Номер на екскурзията
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Destinations)
+                Дестинация
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Duration)
+                Продължителност
+            </th>
+       
+            <th>
+                Вид транспорт
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Цена
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VidTransport)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateRegister)
-            </th>
-            <th></th>
+           
+            
+                <th></th>
+       
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExcursionNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Destinations.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VidTransport)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateRegister)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+            <a asp-action="Details" asp-route-id="@item.Id">
+            <tr>
+                <td>
+                    <b>@Html.DisplayFor(modelItem => item.ExcursionNumber)</b>
+                </td>
+                <td>
+                    <b>@Html.DisplayFor(modelItem => item.Destinations.Name)</b>
+                </td>
+                <td>
+                    <b>@Html.DisplayFor(modelItem => item.Duration)</b>
+                </td>
+
+                <td>
+                    <b>@Html.DisplayFor(modelItem => item.VidTransport)</b>
+                </td>
+                <td>
+                    <b>@Html.DisplayFor(modelItem => item.Price) лв.</b>
+                </td>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                    <td>
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                    }
+                    else
+                    {
+                    <td class="buttoni">
+                        <form method="get" asp-controller="Rezervations" asp-action="CreateWithExcursionId" asp-route-excursionId="@item.Id">
+                            <label><b>Начална дата</b></label>
+                            <br />
+                            <input name="excursionId" type="hidden" value="@item.Id" />
+                            <input type="datetime-local" id="dateStart" name="startDate">
+                            <br />
+                            <label><b>Край дата</b></label>
+                            <br />
+                            <input type="datetime-local" id="dateEnd" name="endDate">
+                            <br />
+                      
+                            <div class="butn">
+                                <input id="reserveBtn" type="submit" value="Резервирай" class="btn btn-primary" />
+                            </div>
+                            
+                        </form>
+                    </td>
+                    }
+
+            </tr></a>
 }
     </tbody>
 </table>
